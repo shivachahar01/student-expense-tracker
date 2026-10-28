@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Student Expense Tracker</h1>
+            <p class="subtitle">Track your spending. Understand your habits.</p>
+        </header>
+
+        <section class="summary-section">
+            <div class="summary-card">
+                <div class="summary-icon total-icon">₹</div>
+                <div class="summary-info">
+                    <p class="summary-label">Total Spent</p>
+                    <p class="summary-value" id="totalSpent">₹0</p>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon count-icon">#</div>
+                <div class="summary-info">
+                    <p class="summary-label">Number of Expenses</p>
+                    <p class="summary-value" id="expenseCount">0</p>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon highest-icon">↑</div>
+                <div class="summary-info">
+                    <p class="summary-label">Highest Expense</p>
+                    <p class="summary-value" id="highestExpense">₹0</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="main-content">
+            <section class="add-expense-section card">
+                <h2 class="section-title">Add Expense</h2>
+                <form id="expenseForm" class="expense-form">
+                    <div class="form-group">
+                        <label for="description">Expense Description</label>
+                        <input 
+                            type="text" 
+                            id="description" 
+                            name="description" 
+                            placeholder="e.g., Lunch, Bus Pass" 
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount (₹)</label>
+                        <input 
+                            type="number" 
+                            id="amount" 
+                            name="amount" 
+                            placeholder="e.g., 120" 
+                            min="0" 
+                            step="0.01"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="Food">Food</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Education">Education</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Expense</button>
+                </form>
+            </section>
+
+            <section class="expense-list-section card">
+                <div class="section-header">
+                    <h2 class="section-title">Expense List</h2>
+                    <div class="filter-group">
+                        <label for="categoryFilter">Filter by Category:</label>
+                        <select id="categoryFilter">
+                            <option value="all">All Categories</option>
+                            <option value="food">Food</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Education">Education</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="expense-table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="expenseTableBody">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="emptyState" class="empty-state hidden">
+                    <p class="empty-icon">📝</p>
+                    <p class="empty-title">No expenses yet</p>
+                    <p class="empty-message">Start tracking your spending by adding your first expense above!</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
